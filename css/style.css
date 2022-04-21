@@ -1,0 +1,161 @@
+body 
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+    margin: 10px 0 0 420px;
+    float: left;
+}
+.lodue-image img
+{
+	width: 80px;
+	
+}
+.heading {
+    width: 199px;
+    padding: 2px 6px;
+    margin-left: 15px;
+    text-align: center;
+    border: 1px solid #9e9e9e;
+    border-radius: 4px;
+}
+
+.heading h2 {
+    font-size: 28px;
+    margin: 0;
+}
+/* dice style start here */
+.lodue-image .image1 img {
+    margin: 0px 0 0 0px;
+    float: left;
+}
+
+.lodue-image .image2 img 
+{
+    margin: 0px 0 0 85px;
+    overflow: hidden;
+}
+.lodue-image .image3 img 
+{
+	margin: 0px 0 0 0px;
+    float: left;
+} 
+
+.lodue-image .image4 img 
+{
+	 margin: 0px 0 0 85px;
+	overflow: hidden;
+}
+
+/* Css button design start here */
+
+.all-btn .start-btn,
+.all-btn .reset-btn
+{
+	width: 300px;
+}
+
+.all-btn .start-btn button,
+.all-btn .reset-btn button
+ {
+    margin: 5px  0 5px 0;
+    padding: 2px 85px;
+}
+
+/* submit button */
+/* #submitBtnElm {
+    padding: 1px 11px;
+}
+ */
+/* player button start here */
+
+.p1-btn
+{
+	float: left;
+}
+
+.p1-btn button {
+    margin: 0px 90px 0 0;
+    padding: 2px 10px;
+}
+
+
+.p2-btn
+{
+	overflow: hidden;
+}
+.p2-btn button 
+{
+	margin: 0 0px 0 5px;
+	padding: 2px 10px;
+}
+
+.p3-btn
+{
+	margin: 5px 90px 0 0;
+	float: left;
+}
+
+.p3-btn button
+{
+	padding: 2px 10px;
+}
+
+.p4-btn
+{
+	overflow: hidden;
+}
+
+.p4-btn button 
+{
+    padding: 2px 10px;
+    margin: 5px 0px 0 4px;
+}
+
+/* score box design start here */
+.design-mother 
+{
+    overflow: hidden;
+}
+
+.score-container {
+    margin: 17px 52px 0  0;
+    border: 1px solid #607d8b70;
+    border-radius: 4px;
+    padding: 2px 10px;
+}
+
+/* player-store-design */
+.player-store-design 
+{
+    text-align: center;
+    color: #0c0c0c70;
+}
+
+.design-mother p {
+    color: #2f3038;
+}
+.pragraph1
+{
+    float: left;
+    margin-right: 100px;
+}
+
+.pragraph2
+{
+    overflow: hidden;
+}
+
+.pragraph3
+{
+    float: left;
+    margin-right: 100px;
+}
+
+.pragraph4
+{
+    overflow: hidden;
+}
