@@ -161,7 +161,7 @@ function generateRandomNumberPlayer1()
 }
 
 /*------------------------*/ 
-// 	  button 1 End here
+// 	  button 1 End here k
 /*------------------------*/
 
 /*========================================*/ 
