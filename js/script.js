@@ -6,6 +6,7 @@ const p1BtnElm = document.querySelector('#p1BtnElm');
 const p2BtnElm = document.querySelector('#p2BtnElm');
 const p3BtnElm = document.querySelector('#p3BtnElm');
 const p4BtnElm = document.querySelector('#p4BtnElm');
+const resetBtnElm = document.querySelector('#resetBtnElm');
 
 // dice selector start here
 const p1DiceElm = document.querySelector('#p1DiceElm');
@@ -20,13 +21,13 @@ const player2ScoreElm = document.querySelector('#p2ScorElm');
 const player3ScoreElm = document.querySelector('#p3ScorElm');
 const player4ScoreElm = document.querySelector('#p4ScorElm');
 
+//  showing success message
+const successMessages = document.querySelector('.successMessages img');
 // random number generation start here
 function setRandomNumberToWinScor(max)
 {
 	return Math.ceil(Math.random() * 10)
 }
-
-
 
 // data layer start here
 let defaultWinScor = 20;
@@ -74,11 +75,8 @@ function startBtnDisabled()
 function viewLayerWinScor()
 {	
 	defaultWinScor = setRandomNumberToWinScor(defaultWinScor);
-	successScore(defaultWinScor);
 	mainScorElm.textContent = defaultWinScor;
-	
 }
-
 
 /*------------------------*/ 
 // 	  button 1 Start here
@@ -92,16 +90,37 @@ function defaultBtn2_3_4_disabled()
 	p2BtnElm.setAttribute('disabled','disabled');
 	p3BtnElm.setAttribute('disabled','disabled');
 	p4BtnElm.setAttribute('disabled','disabled');
+	resetBtnElm.setAttribute('disabled','disabled');
 }
 defaultBtn2_3_4_disabled()
 
 
+// image will be change it mean's all image will be default image
+function defaultImageHere()
+{
+	p1DiceElm.setAttribute('src','defaul-image/default.png');
+	p2DiceElm.setAttribute('src','defaul-image/default.png');
+	p3DiceElm.setAttribute('src','defaul-image/default.png');
+	p4DiceElm.setAttribute('src','defaul-image/default.png');
+}
+
+// reset button inabled 
+function resetButtonInabled()
+{
+	resetBtnElm.removeAttribute('disabled');
+}
 
 
 p1BtnElm.addEventListener('click', (evt) => 
 {
 	evt.preventDefault();
 	player1BtnInabledDisabledFun();	
+	if(defaultWinScor === player1Score)
+	{
+		defaultBtn2_3_4_disabled();
+		defaultImageHere();
+		resetButtonInabled();
+	}
 })
 // player1 button inabled and disabled function start here
 function player1BtnInabledDisabledFun()
@@ -117,29 +136,54 @@ function player1BtnInabledDisabledFun()
 		// adding score player 1
 		p1ScoreAddingToStore(getRandomNumberToGRNP1);
 
-
 		p1BtnElm.setAttribute('disabled','disabled');
 		p2BtnElm.removeAttribute('disabled');
 		turn = 'player2';
 	}
 }
+
+
+// -------------------For checking ---------------------
+function successMessShowing()
+{
+
+	let isP1Sucess = defaultWinScor === player1Score;
+	let isP2Sucess = defaultWinScor === player2Score;
+	let isP3Sucess = defaultWinScor === player3Score;
+	let isP4Sucess = defaultWinScor === player4Score;
+
+	switch(true)
+	{
+		case isP1Sucess :
+			successMessages.setAttribute('src', 'defaul-image/two.gif');
+		break;
+		case isP2Sucess :
+			successMessages.setAttribute('src', 'defaul-image/two.gif');
+		break;
+		case isP3Sucess :
+			successMessages.setAttribute('src', 'defaul-image/two.gif');
+		break;
+		case isP4Sucess :
+			successMessages.setAttribute('src', 'defaul-image/two.gif');
+		break;
+	}
+}
+
+// -------------------For checking ---------------------
+
 function p1ScoreAddingToStore(getRandomNumberToGRNP1)
 {
 	player1Score += getRandomNumberToGRNP1;
-	console.log(successScore(player1Score));
+	// -------=============-=-===-=-=-=-=====
+	successMessShowing();
+	// -------=============-=-===-=-=-==-=====
 	player1ScoreElm.textContent = player1Score;
 }
 
-// success message start here
-function successScore(player1Score,successNum)
-{
-	let playerss = false;
-	if(successNum === player1Score)
-	{
-		playerss = 'Player1 one is winners';
-	}
-	return playerss;
-}
+
+
+
+
 
 
 // set player1 dice start herer
@@ -171,6 +215,12 @@ p2BtnElm.addEventListener('click', (evt) =>
 {
 	evt.preventDefault();
 	player2BtnInabledDisabledFun();
+	if(defaultWinScor === player2Score)
+	{
+		defaultBtn2_3_4_disabled();
+		defaultImageHere();
+		resetButtonInabled();
+	}
 });
 
 
@@ -200,7 +250,9 @@ function p2ScoreAddingToStore(getRandomNumPlayer2)
 {
 	 player2Score += getRandomNumPlayer2;
 	// it showing success message 
-
+	// -------=============-=-===-=-=-=-=====
+	successMessShowing();
+	// -------=============-=-===-=-=-==-=====
 	player2ScoreElm.textContent = player2Score;
 }
 
@@ -233,6 +285,12 @@ p3BtnElm.addEventListener('click',(evt) =>
 {
 	evt.preventDefault();
 	player3BtnInabledDisabledFun();
+	if(defaultWinScor === player3Score)
+	{
+		defaultBtn2_3_4_disabled();
+		defaultImageHere();
+		resetButtonInabled();
+	}
 })
 // player3 button inabled and disabled function start here
 function player3BtnInabledDisabledFun()
@@ -257,7 +315,9 @@ function p3ScoreAddingToStore(getRandomNumPlayer3)
 {
 	 player3Score += getRandomNumPlayer3;
 	// player 3 success score start here
-
+	// -------=============-=-===-=-=-=-=====
+	successMessShowing();
+	// -------=============-=-===-=-=-==-=====
 	player3ScoreElm.textContent = player3Score;
 }
 //Systematice success message start here player3
@@ -309,6 +369,12 @@ p4BtnElm.addEventListener('click',(evt) =>
 {
 	evt.preventDefault();
 	player4BtnInabledDisabledFun();
+	if(defaultWinScor === player4Score)
+	{
+		defaultBtn2_3_4_disabled();
+		defaultImageHere();
+		resetButtonInabled();
+	}
 })
 // player4 button inabled and disabled start here
 function player4BtnInabledDisabledFun()
@@ -334,6 +400,11 @@ function player4BtnInabledDisabledFun()
 function p4ScoreAddingToStore(getRandomNumToGRNP)
 {
 	player4Score += getRandomNumToGRNP;
+	// -------=============-=-===-=-=-=-=====
+	
+	
+	successMessShowing();
+	// -------=============-=-===-=-=-==-=====
 	player4ScoreElm.textContent = player4Score
 }
 // set image to img tag Player4
@@ -353,21 +424,25 @@ function generateRandomNumberPlayer4()
 	let randomNumPlayer4 = Math.ceil(Math.random() * 6);
 	return randomNumPlayer4;
 }
+// -----------------------------------------------------------
+// 					reset button start here 
+// -----------------------------------------------------------
 
-// practice switch statement
-let  number = 90;
-switch(number)
+resetBtnElm.addEventListener('click', (evt) => 
 {
-	case 10 :
-	console.log('10 is true');
-	break;
-	case  90 :
-	console.log('90 is true');
-	break;
-	default : 
-	console.log('invalid feedback');
-	break;
+	evt.preventDefault();
+	// reset button disabled start button inabled
+	resetBtnDisabledStartBtnInabled();
+	player1Score = '';
+})
+
+// reset button disabled start button inabled
+function resetBtnDisabledStartBtnInabled()
+{
+	resetBtnElm.setAttribute('disabled','disabled');
+	startBtnElm.removeAttribute('disabled');
 }
+
 
 
 

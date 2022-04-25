@@ -161,3 +161,13 @@ body
     overflow: hidden;
 }
 /* just github testing start here k */
+
+/* success message start here  */
+
+.successMessages img {
+    margin: -107px 10px 0 806px;
+    width: 125px;
+}
+
+
+
