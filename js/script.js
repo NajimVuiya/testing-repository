@@ -26,7 +26,7 @@ const successMessages = document.querySelector('.successMessages img');
 // random number generation start here
 function setRandomNumberToWinScor(max)
 {
-	return Math.ceil(Math.random() * 10)
+	return Math.ceil(Math.random() * 8)
 }
 
 // data layer start here
@@ -47,6 +47,29 @@ function defaultShowToUI()
 }
 // show default to UI
 defaultShowToUI()
+//  all audio start here  
+// success audio 
+const successAudios = new Audio();
+successAudios.src = 'audio-sound/successButton.mp3';
+// reset audio start here 
+const resetBtnAudio = new Audio();
+resetBtnAudio.src = 'audio-sound/resetAudio.wav';
+// start button 
+const startButtonAudio = new Audio();
+startButtonAudio.src = 'audio-sound/startbutton.wav';
+// player1 
+const player1BtnAudio = new Audio();
+player1BtnAudio.src = 'audio-sound/playerButton.wav';
+// Player2 
+const player2BtnAudio = new Audio();
+player2BtnAudio.src = 'audio-sound/playerButton.wav';
+// player3 
+const player3BtnAudio = new Audio();
+player3BtnAudio.src = 'audio-sound/playerButton.wav';
+// player4 
+const player4BtnAudio = new Audio();
+player4BtnAudio.src = 'audio-sound/playerButton.wav';
+
 
 startBtnElm.addEventListener('click',(evt) => 
 {
@@ -59,6 +82,9 @@ startBtnElm.addEventListener('click',(evt) =>
 
 	// after clicking button1 will be inabled
 	player1BtnInabled();
+
+	// audio start here
+	startButtonAudio.play();
 })
 
 // after clicking button1 will be inabled
@@ -92,7 +118,7 @@ function defaultBtn2_3_4_disabled()
 	p4BtnElm.setAttribute('disabled','disabled');
 	resetBtnElm.setAttribute('disabled','disabled');
 }
-defaultBtn2_3_4_disabled()
+defaultBtn2_3_4_disabled();
 
 
 // image will be change it mean's all image will be default image
@@ -121,7 +147,10 @@ p1BtnElm.addEventListener('click', (evt) =>
 		defaultImageHere();
 		resetButtonInabled();
 	}
+	player1BtnAudio.play();	
 })
+
+
 // player1 button inabled and disabled function start here
 function player1BtnInabledDisabledFun()
 {
@@ -156,15 +185,19 @@ function successMessShowing()
 	{
 		case isP1Sucess :
 			successMessages.setAttribute('src', 'defaul-image/two.gif');
+			successAudios.play();
 		break;
 		case isP2Sucess :
 			successMessages.setAttribute('src', 'defaul-image/two.gif');
+			successAudios.play();
 		break;
 		case isP3Sucess :
 			successMessages.setAttribute('src', 'defaul-image/two.gif');
+			successAudios.play();
 		break;
 		case isP4Sucess :
 			successMessages.setAttribute('src', 'defaul-image/two.gif');
+			successAudios.play();
 		break;
 	}
 }
@@ -179,10 +212,6 @@ function p1ScoreAddingToStore(getRandomNumberToGRNP1)
 	// -------=============-=-===-=-=-==-=====
 	player1ScoreElm.textContent = player1Score;
 }
-
-
-
-
 
 
 
@@ -221,6 +250,7 @@ p2BtnElm.addEventListener('click', (evt) =>
 		defaultImageHere();
 		resetButtonInabled();
 	}
+	player2BtnAudio.play();
 });
 
 
@@ -291,6 +321,7 @@ p3BtnElm.addEventListener('click',(evt) =>
 		defaultImageHere();
 		resetButtonInabled();
 	}
+	player3BtnAudio.play();
 })
 // player3 button inabled and disabled function start here
 function player3BtnInabledDisabledFun()
@@ -375,6 +406,7 @@ p4BtnElm.addEventListener('click',(evt) =>
 		defaultImageHere();
 		resetButtonInabled();
 	}
+	player4BtnAudio.play();
 })
 // player4 button inabled and disabled start here
 function player4BtnInabledDisabledFun()
@@ -433,9 +465,41 @@ resetBtnElm.addEventListener('click', (evt) =>
 	evt.preventDefault();
 	// reset button disabled start button inabled
 	resetBtnDisabledStartBtnInabled();
-	player1Score = '';
-})
+	// success image is remove now
+	successImageRemove();
 
+	// Remove user score UI and data layer
+	cleanDataStore();
+	// default score
+	// reset audio start here 
+	resetBtnAudio.play();
+
+	
+	defaultWinScor = 20;
+	mainScorElm.textContent = defaultWinScor;
+	// first all buton will be disabled
+})
+// Remove user score UI and data layer
+function cleanDataStore()
+{
+	// data layer reomve 
+	player1Score = 0;
+	player2Score = 0;
+	player3Score = 0;
+	player4Score = 0;
+
+	// view layer
+	player1ScoreElm.textContent = player1Score;
+	player2ScoreElm.textContent = player2Score;
+	player3ScoreElm.textContent = player3Score;
+	player4ScoreElm.textContent = player4Score;
+
+}
+// success image is remove now
+function successImageRemove()
+{
+	successMessages.removeAttribute('src', 'defaul-image/two.gif');
+}
 // reset button disabled start button inabled
 function resetBtnDisabledStartBtnInabled()
 {
