@@ -1,5 +1,7 @@
 'use strict';
 
+(function()
+{
 // Button selector start here 
 const startBtnElm = document.querySelector('#startBtnElm');
 const p1BtnElm = document.querySelector('#p1BtnElm');
@@ -71,22 +73,9 @@ const player4BtnAudio = new Audio();
 player4BtnAudio.src = 'audio-sound/playerButton.wav';
 
 
-startBtnElm.addEventListener('click',(evt) => 
-{
-	evt.preventDefault();
-	// vsetRandomValueFromDWSiew layer start here 
-	viewLayerWinScor();
-
-	// after clicking startBtn will be disabled
-	startBtnDisabled();
-
-	// after clicking button1 will be inabled
-	player1BtnInabled();
-
-	// audio start here
-	startButtonAudio.play();
-})
-
+/*=======================================*/ /*=======================*/
+// 							start all work start here
+/*=======================================*/ /*=======================*/
 // after clicking button1 will be inabled
 function player1BtnInabled()
 {
@@ -103,7 +92,6 @@ function viewLayerWinScor()
 	defaultWinScor = setRandomNumberToWinScor(defaultWinScor);
 	mainScorElm.textContent = defaultWinScor;
 }
-
 /*------------------------*/ 
 // 	  button 1 Start here
 /*------------------------*/ 
@@ -119,8 +107,6 @@ function defaultBtn2_3_4_disabled()
 	resetBtnElm.setAttribute('disabled','disabled');
 }
 defaultBtn2_3_4_disabled();
-
-
 // image will be change it mean's all image will be default image
 function defaultImageHere()
 {
@@ -129,28 +115,31 @@ function defaultImageHere()
 	p3DiceElm.setAttribute('src','defaul-image/default.png');
 	p4DiceElm.setAttribute('src','defaul-image/default.png');
 }
-
 // reset button inabled 
 function resetButtonInabled()
 {
 	resetBtnElm.removeAttribute('disabled');
 }
+/*=======================================*/ /*=======================*/
+// 							start all work End here
+/*=======================================*/ /*=======================*/
 
 
-p1BtnElm.addEventListener('click', (evt) => 
+/*=======================================*/ /*=======================*/
+// 							Player1 button Start here 
+/*=======================================*/ /*=======================*/
+
+
+// successConditionFun start here 
+function successConditionFun()
 {
-	evt.preventDefault();
-	player1BtnInabledDisabledFun();	
 	if(defaultWinScor === player1Score)
 	{
 		defaultBtn2_3_4_disabled();
 		defaultImageHere();
 		resetButtonInabled();
 	}
-	player1BtnAudio.play();	
-})
-
-
+}
 // player1 button inabled and disabled function start here
 function player1BtnInabledDisabledFun()
 {
@@ -173,9 +162,9 @@ function player1BtnInabledDisabledFun()
 
 
 // -------------------For checking ---------------------
+// success message start here
 function successMessShowing()
 {
-
 	let isP1Sucess = defaultWinScor === player1Score;
 	let isP2Sucess = defaultWinScor === player2Score;
 	let isP3Sucess = defaultWinScor === player3Score;
@@ -201,9 +190,8 @@ function successMessShowing()
 		break;
 	}
 }
-
 // -------------------For checking ---------------------
-
+// player1 adding score
 function p1ScoreAddingToStore(getRandomNumberToGRNP1)
 {
 	player1Score += getRandomNumberToGRNP1;
@@ -212,9 +200,6 @@ function p1ScoreAddingToStore(getRandomNumberToGRNP1)
 	// -------=============-=-===-=-=-==-=====
 	player1ScoreElm.textContent = player1Score;
 }
-
-
-
 // set player1 dice start herer
 function setPlayer1Dice(getDiceImageFromP1IS)
 {
@@ -232,29 +217,24 @@ function generateRandomNumberPlayer1()
 	let randomNumPlayer1 = Math.ceil(Math.random() * 6);
 	return randomNumPlayer1;
 }
+/*=======================================*/ /*=======================*/
+// 							Player1 button End here 
+/*=======================================*/ /*=======================*/
 
-/*------------------------*/ 
-// 	  button 1 End here k
-/*------------------------*/
 
-/*========================================*/ 
-//			 Button 2 Start here 
-/*========================================*/ 
-p2BtnElm.addEventListener('click', (evt) => 
+/*=======================================*/ /*=======================*/
+// 							Player2 button Start here 
+/*=======================================*/ /*=======================*/
+// player2 success condtion start here
+function successConditionFunP2()
 {
-	evt.preventDefault();
-	player2BtnInabledDisabledFun();
 	if(defaultWinScor === player2Score)
 	{
 		defaultBtn2_3_4_disabled();
 		defaultImageHere();
 		resetButtonInabled();
 	}
-	player2BtnAudio.play();
-});
-
-
-
+}
 // player2 button inabled and idabled function start here
 function player2BtnInabledDisabledFun()
 {
@@ -272,10 +252,9 @@ function player2BtnInabledDisabledFun()
 		p2BtnElm.setAttribute('disabled','disabled');
 		p3BtnElm.removeAttribute('disabled');
 		turn = 'player3';
-
 	}
 }
-// player 2 score  
+// player 2 score  adding
 function p2ScoreAddingToStore(getRandomNumPlayer2)
 {
 	 player2Score += getRandomNumPlayer2;
@@ -285,7 +264,6 @@ function p2ScoreAddingToStore(getRandomNumPlayer2)
 	// -------=============-=-===-=-=-==-=====
 	player2ScoreElm.textContent = player2Score;
 }
-
 // set image to img tag Player2
 function setImageToImg(getDiceImgFromDIS)
 {
@@ -303,26 +281,24 @@ function geterateRandomNumPlayer2()
 	let player2Randoms = Math.ceil(Math.random() * 6);
 	return player2Randoms;
 }
-/*========================================*/ 
-//			 Button 2 Start here 
-/*========================================*/ 
 
-/*(((()))))((((((((((()))))))))))(((((((((((((()))))))))))*/
-//			 Button 3 Start here 
-/*(((()))))((((((((((()))))))))))(((((((((((((()))))))))))*/
+/*=======================================*/ /*=======================*/
+// 							Player2 button End here 
+/*=======================================*/ /*=======================*/
 
-p3BtnElm.addEventListener('click',(evt) => 
+/*=======================================*/ /*=======================*/
+// 							Player3 button Start here 
+/*=======================================*/ /*=======================*/
+// player3 success condition start here
+function successConditionFunP3()
 {
-	evt.preventDefault();
-	player3BtnInabledDisabledFun();
 	if(defaultWinScor === player3Score)
 	{
 		defaultBtn2_3_4_disabled();
 		defaultImageHere();
 		resetButtonInabled();
 	}
-	player3BtnAudio.play();
-})
+}
 // player3 button inabled and disabled function start here
 function player3BtnInabledDisabledFun()
 {
@@ -356,21 +332,16 @@ function playerThreeScore(player3Score)
 {
 	successMessageFun(player3Score);
 }
-
 //Systematice success message start here player2
 function playerTwoScore(player2Score)
 {
 	successMessageFun(player2Score)
 }
-
 // Systematice success message start here player 1
 function playerOneScore(player1Score)
 {
 	successMessageFun(player1Score);
 }
-
-
-
 // set image to img tag Player3
 function setImageToImgPlayer3(getDiceISP3)
 {
@@ -388,26 +359,24 @@ function generateRandomNumber3()
 	let player3Randoms = Math.ceil(Math.random() * 6);
 	return player3Randoms;
 }
-/*(((()))))((((((((((()))))))))))(((((((((((((()))))))))))*/
-//			 Button 3 End here 
-/*(((()))))((((((((((()))))))))))(((((((((((((()))))))))))*/
 
-
-/*{{{{{{{{{{{{{{{{{{{-------}}}}}}}}}}}}}}}}}}}}}}}*/
-//			 Button 4 Start here 
-/*{{{{{{{{{{{{{{{{{{{-------}}}}}}}}}}}}}}}}}}}}}}}*/
-p4BtnElm.addEventListener('click',(evt) => 
+// success condition functin start here
+function successConditionFunP4()
 {
-	evt.preventDefault();
-	player4BtnInabledDisabledFun();
 	if(defaultWinScor === player4Score)
 	{
 		defaultBtn2_3_4_disabled();
 		defaultImageHere();
 		resetButtonInabled();
 	}
-	player4BtnAudio.play();
-})
+}
+/*=======================================*/ /*=======================*/
+// 							Player3 button End here 
+/*=======================================*/ /*=======================*/
+
+/*=======================================*/ /*=======================*/
+// 							Player4 button Start here 
+/*=======================================*/ /*=======================*/
 // player4 button inabled and disabled start here
 function player4BtnInabledDisabledFun()
 {
@@ -424,17 +393,14 @@ function player4BtnInabledDisabledFun()
 
 		p4BtnElm.setAttribute('disabled','disabled');
 		p1BtnElm.removeAttribute('disabled');
-
 		turn = 'player1';
 	}
 }
-// player 4 score
+// player 4 score adding
 function p4ScoreAddingToStore(getRandomNumToGRNP)
 {
 	player4Score += getRandomNumToGRNP;
 	// -------=============-=-===-=-=-=-=====
-	
-	
 	successMessShowing();
 	// -------=============-=-===-=-=-==-=====
 	player4ScoreElm.textContent = player4Score
@@ -456,29 +422,19 @@ function generateRandomNumberPlayer4()
 	let randomNumPlayer4 = Math.ceil(Math.random() * 6);
 	return randomNumPlayer4;
 }
-// -----------------------------------------------------------
-// 					reset button start here 
-// -----------------------------------------------------------
 
-resetBtnElm.addEventListener('click', (evt) => 
+/*=======================================*/ /*=======================*/
+// 							Player4 button End here 
+/*=======================================*/ /*=======================*/
+
+/*=======================================*/ /*=======================*/
+// 							Reset button Start here 
+/*=======================================*/ /*=======================*/
+function defaultsScore()
 {
-	evt.preventDefault();
-	// reset button disabled start button inabled
-	resetBtnDisabledStartBtnInabled();
-	// success image is remove now
-	successImageRemove();
-
-	// Remove user score UI and data layer
-	cleanDataStore();
-	// default score
-	// reset audio start here 
-	resetBtnAudio.play();
-
-	
 	defaultWinScor = 20;
 	mainScorElm.textContent = defaultWinScor;
-	// first all buton will be disabled
-})
+}
 // Remove user score UI and data layer
 function cleanDataStore()
 {
@@ -493,7 +449,6 @@ function cleanDataStore()
 	player2ScoreElm.textContent = player2Score;
 	player3ScoreElm.textContent = player3Score;
 	player4ScoreElm.textContent = player4Score;
-
 }
 // success image is remove now
 function successImageRemove()
@@ -506,6 +461,87 @@ function resetBtnDisabledStartBtnInabled()
 	resetBtnElm.setAttribute('disabled','disabled');
 	startBtnElm.removeAttribute('disabled');
 }
+/*=======================================*/ /*=======================*/
+// 							Reset button End here 
+/*=======================================*/ /*=======================*/
+// init function Start here
+function init()
+{
+	// start button Start here
+	startBtnElm.addEventListener('click',(evt) => 
+	{
+		evt.preventDefault();
+
+		// vsetRandomValueFromDWSiew layer start here 
+		viewLayerWinScor();
+
+		// after clicking startBtn will be disabled
+		startBtnDisabled();
+
+		// after clicking button1 will be inabled
+		player1BtnInabled();
+
+		// audio start here
+		startButtonAudio.play();
+	});
+
+	// Player1 button Start here 
+	p1BtnElm.addEventListener('click', (evt) => 
+	{
+		evt.preventDefault();
+		player1BtnInabledDisabledFun();	
+		successConditionFun();
+		player1BtnAudio.play();	
+	});
+
+	// Player2 button Start here 
+	p2BtnElm.addEventListener('click', (evt) => 
+	{
+		evt.preventDefault();
+		player2BtnInabledDisabledFun();
+		// player2 success condtion start here
+		successConditionFunP2();
+		player2BtnAudio.play();
+	});
+
+	// Player3 button Start here 
+	p3BtnElm.addEventListener('click',(evt) => 
+	{
+		evt.preventDefault();
+		player3BtnInabledDisabledFun();
+		successConditionFunP3();
+		player3BtnAudio.play();
+	});
+
+	// Player4 button Start here 
+	p4BtnElm.addEventListener('click',(evt) => 
+	{
+		evt.preventDefault();
+		player4BtnInabledDisabledFun();
+		successConditionFunP4();
+		player4BtnAudio.play();
+	});
+
+	// Reset button start here
+	resetBtnElm.addEventListener('click', (evt) => 
+	{
+		evt.preventDefault();
+		// reset button disabled start button inabled
+		resetBtnDisabledStartBtnInabled();
+		// success image is remove now
+		successImageRemove();
+		// Remove user score UI and data layer
+		cleanDataStore();
+		// reset audio start here 
+		resetBtnAudio.play();
+	    // default score start here
+		defaultsScore();
+		
+	});
+}
+init();
+// init function End here
+})();
 
 
 
